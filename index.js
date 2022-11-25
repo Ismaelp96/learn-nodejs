@@ -1,11 +1,12 @@
 const express = require("express");
+const app = express();
 const consign = require("consign");
 const bodyParser = require("body-parser");
-
-let app = express();
+const expressValidator = require("express-validator");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(expressValidator());
 
 consign().include("routes").include("utils").into(app);
 
